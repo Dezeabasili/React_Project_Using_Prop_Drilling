@@ -3,7 +3,6 @@ let max_id = 0;
 
 const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTaskId, inputRef, newTask, setNewTask }) => {
 
-
     const calculate_id = () => {
         if (!tasksList.length) {
             max_id = 1;
@@ -13,14 +12,6 @@ const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTas
             return max_id;
         }
     }
-
-    // const calculate_id2 = () => {
-    //     if (tasksList.length)
-    //         //get the id of the last task in the list and add 1 to it
-    //         return tasksList[tasksList.length - 1].id + 1
-    //     else
-    //         return 1
-    // }
 
     const addTask = (e) => {
         e.preventDefault()
@@ -82,8 +73,6 @@ const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTas
                 const comp3 = comp2.concat(comp1)
                 setTasksList(comp3)
             }
-
-            // setTasksList(newTaskList)
         }
 
         setNewTask('')
