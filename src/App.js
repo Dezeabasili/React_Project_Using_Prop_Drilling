@@ -4,6 +4,7 @@ import TasksList from "./components/TasksList";
 import Footer from "./components/Footer";
 import AddNewTask from "./components/AddNewTask";
 import SearchTasksList from './components/SearchTasksList';
+import ClearList from './components/ClearList';
 
 
 function App() {
@@ -41,11 +42,16 @@ function App() {
     setTasksList(newList)
   }
 
+  const clearList = () => {
+    setTasksList([])
+  }
+
   return (
     <div className="App">
       <Header />
       <AddNewTask newTask={newTask} setNewTask={setNewTask} tasksList={tasksList} setTasksList={setTasksList} edited={edited} setEdited={setEdited} taskId={taskId} setTaskId={setTaskId} inputRef={inputRef} />
       <SearchTasksList searchTask={searchTask} setSearchTask={setSearchTask} />
+      <ClearList clearList={clearList}/>
       <TasksList tasksList={tasksToDisplay} setTasksList={setTasksList} deleteTask={deleteTask} editButton={editButton} edited={edited} />
       <Footer />
 

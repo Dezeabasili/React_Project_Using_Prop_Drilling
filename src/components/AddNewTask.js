@@ -1,13 +1,26 @@
 import { FaPlus } from "react-icons/fa";
+let max_id = 0;
 
 const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTaskId, inputRef, newTask, setNewTask }) => {
+
+
     const calculate_id = () => {
-        if (tasksList.length)
-            //get the id of the last task in the list and add 1 to it
-            return tasksList[tasksList.length - 1].id + 1
-        else
+        if (!tasksList.length) {
+            max_id = 1;
             return 1
+        } else {
+            max_id = max_id + 1;
+            return max_id;
+        }
     }
+
+    // const calculate_id2 = () => {
+    //     if (tasksList.length)
+    //         //get the id of the last task in the list and add 1 to it
+    //         return tasksList[tasksList.length - 1].id + 1
+    //     else
+    //         return 1
+    // }
 
     const addTask = (e) => {
         e.preventDefault()
@@ -24,7 +37,25 @@ const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTas
                 "completed": false
             }
             const newTaskList2 = tasksList.map(task => task.id === taskId ? newItem2 : task)
-            setTasksList(newTaskList2)
+
+            const comp1 = newTaskList2.filter(task => task.completed === true)
+            const comp2 = newTaskList2.filter(task => task.completed === false)
+            if ((comp1.length) && !(comp2.length)) {
+                comp1.sort((a, b) => a.id - b.id)
+                setTasksList(comp1)
+            }
+            else if ((comp2.length) && !(comp1.length)) {
+                comp2.sort((a, b) => a.id - b.id)
+                setTasksList(comp2)
+            }
+            else {
+                comp1.sort((a, b) => a.id - b.id)
+                comp2.sort((a, b) => a.id - b.id)
+                const comp3 = comp2.concat(comp1)
+                setTasksList(comp3)
+            }
+
+            // setTasksList(newTaskList2)
             setEdited(false)
             setTaskId(0)
         } else {
@@ -34,7 +65,25 @@ const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTas
                 "completed": false
             }
             const newTaskList = [...tasksList, newItem]
-            setTasksList(newTaskList)
+
+            const comp1 = newTaskList.filter(task => task.completed === true)
+            const comp2 = newTaskList.filter(task => task.completed === false)
+            if ((comp1.length) && !(comp2.length)) {
+                comp1.sort((a, b) => a.id - b.id)
+                setTasksList(comp1)
+            }
+            else if ((comp2.length) && !(comp1.length)) {
+                comp2.sort((a, b) => a.id - b.id)
+                setTasksList(comp2)
+            }
+            else {
+                comp1.sort((a, b) => a.id - b.id)
+                comp2.sort((a, b) => a.id - b.id)
+                const comp3 = comp2.concat(comp1)
+                setTasksList(comp3)
+            }
+
+            // setTasksList(newTaskList)
         }
 
         setNewTask('')
