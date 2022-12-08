@@ -6,6 +6,8 @@ import AddNewTask from "./components/AddNewTask";
 import SearchTasksList from './components/SearchTasksList';
 import ClearList from './components/ClearList';
 
+let max_id = Number(JSON.parse(localStorage.getItem("max_id"))) || 0
+
 
 function App() {
   const inputRef = useRef()
@@ -19,7 +21,20 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tasks_list", JSON.stringify(tasksList))
+    
   }, [tasksList])
+
+  const calculate_id = () => {
+    if (!tasksList.length) {
+        max_id = 1;
+        localStorage.setItem("max_id", JSON.stringify(max_id))
+        return 1
+    } else {
+        max_id = max_id + 1;
+        localStorage.setItem("max_id", JSON.stringify(max_id))
+        return max_id;
+    }
+}
 
   //Define what to display in the tasks list based on what is in the search box
   const tasksToDisplay = tasksList.filter(task => task.task.toLowerCase().includes(searchTask.toLowerCase()))
@@ -49,7 +64,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddNewTask newTask={newTask} setNewTask={setNewTask} tasksList={tasksList} setTasksList={setTasksList} edited={edited} setEdited={setEdited} taskId={taskId} setTaskId={setTaskId} inputRef={inputRef} />
+      <AddNewTask newTask={newTask} setNewTask={setNewTask} tasksList={tasksList} setTasksList={setTasksList} edited={edited} setEdited={setEdited} taskId={taskId} setTaskId={setTaskId} inputRef={inputRef} max_id={max_id} calculate_id={calculate_id} />
       <SearchTasksList searchTask={searchTask} setSearchTask={setSearchTask} />
       <ClearList clearList={clearList}/>
       <TasksList tasksList={tasksToDisplay} setTasksList={setTasksList} deleteTask={deleteTask} editButton={editButton} edited={edited} />

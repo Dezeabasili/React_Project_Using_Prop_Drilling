@@ -2,7 +2,7 @@ import React from 'react'
 
 const ClearList = ({clearList}) => {
   return (
-    <button onClick={clearList}>
+    <button className='clearList' onClick={clearList}>
       Clear List
     </button>
   )

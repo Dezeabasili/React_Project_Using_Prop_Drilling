@@ -1,7 +1,7 @@
 const SearchTasksList = ({ searchTask, setSearchTask }) => {
 
     return (
-        <form>
+        <form className="searchTaskList">
             <input
                 type="text"
                 value={searchTask}

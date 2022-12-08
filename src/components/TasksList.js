@@ -28,7 +28,7 @@ const TasksList = ({ tasksList, setTasksList, editButton, deleteTask, edited }) 
         <main>
             <ul>
                 {tasksList.map(task => (
-                    <li key={task.id}>
+                    <li className="task" key={task.id}>
                         <input type="checkbox" checked={task.completed} onChange={() => checkedTask(task.id)} />
                         <label >{task.task}</label>
                         {!edited && <FaRegTrashAlt onClick={() => deleteTask(task.id)}></FaRegTrashAlt>}

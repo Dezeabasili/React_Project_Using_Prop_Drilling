@@ -1,17 +1,6 @@
 import { FaPlus } from "react-icons/fa";
-let max_id = 0;
 
-const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTaskId, inputRef, newTask, setNewTask }) => {
-
-    const calculate_id = () => {
-        if (!tasksList.length) {
-            max_id = 1;
-            return 1
-        } else {
-            max_id = max_id + 1;
-            return max_id;
-        }
-    }
+const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTaskId, inputRef, newTask, setNewTask, max_id, calculate_id}) => {
 
     const addTask = (e) => {
         e.preventDefault()
@@ -79,7 +68,7 @@ const AddNewTask = ({ tasksList, setTasksList, edited, setEdited, taskId, setTas
     }
 
     return (
-        <form onSubmit={addTask}>
+        <form className="addTask" onSubmit={addTask}>
             <input
                 type="text"
                 value={newTask}

@@ -9,17 +9,28 @@
 body {
     font-family: 'Roboto Condensed', sans-serif;
     min-height: 100vh;
+    display: flex;
+}
+
+#root {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .App {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     height: 100vh;
+    width: 100%;
     max-width: 500px;
     margin: auto;
     padding: 0;
     border: 1px darkgreen solid;
+
 }
 
 header {
@@ -29,10 +40,10 @@ header {
     background-color:darkgreen;
     width: 100%;
     color: whitesmoke;
-    margin: 0;
 }
 
 footer {
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,12 +54,93 @@ footer {
 
 main {
     flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    /* background-color: bisque; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-li {
+ul {
+    width: 100%;
+    padding: 0.15rem;
+}
+
+.task {
     list-style-type: none;
-}
-
-.newTask {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color:azure;
+    margin: 0.25rem;
+    padding: 0.25rem;
     width: 100%;
 }
+
+.task input {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+}
+
+.task label {
+    flex-grow: 1;
+}
+
+.task svg {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+}
+
+.addTask {
+    width: 100%;
+    display: flex;
+
+}
+
+.addTask input {
+    flex-grow: 1;
+    margin: 0.5rem;
+}
+
+.addTask svg {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border: 1px gray solid;
+    margin: 0.5rem;
+}
+
+.searchTaskList {
+    width: 100%;
+    display: flex;
+
+}
+
+.searchTaskList input {
+    flex-grow: 1;
+    margin: 0.5rem;
+    min-height: 40px;
+}
+
+button.clearList {
+    margin: 0.5rem;
+}
+
+.task button {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border: 1px gray solid;
+    margin: 0.5rem;
+}
+
+
